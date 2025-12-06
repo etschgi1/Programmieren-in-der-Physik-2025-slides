@@ -1,0 +1,198 @@
+% LaTeX Präsentationsvorlage (2013) der TU Graz, rev12, 2013/01/31
+% !TeX encoding = UTF-8
+\documentclass{beamer}
+% \documentclass[aspectratio=169]{beamer}
+% \usetheme{tugraz2013}
+% \usetheme[notes]{tugraz2013}
+\usepackage{../common/beamerthemetugraz2013}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{bbding}
+\usepackage{wasysym}
+\usepackage{caption}
+\usepackage{array}
+% \usepackage{minted}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage{picture}
+\usepackage{rotating}
+\input{../common/commands.tex} % commands
+
+
+%% Titelblatt-Einstellungen
+\title[]
+{Python 10}
+\author[E.~Wachmann]{\scriptsize Elias Wachmann
+}
+\date{2025} % \today für heutiges Datum verwenden
+\institute[Institute of Theoretical and Computational Physics]
+{
+}
+\instituteurl{www.tugraz.at}
+% \institutelogo{kurz.pdf}
+%~ \additionallogo{merged_logos}
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+\lstset{
+    literate={Ö}{{\"O}}1
+             {Ä}{{\"A}}1
+             {Ü}{{\"U}}1
+             {ß}{{\ss}}1
+             {ü}{{\"u}}1
+             {ä}{{\"a}}1
+             {ö}{{\"o}}1
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleframe
+
+%\begin{frame}
+%  \frametitle{Outline}
+%  \tableofcontents%[hideallsubsections] 
+%  \note{
+%  	Meine Präsentation ist wie folgt strukturiert \ldots
+%  }
+%\end{frame}
+
+\section*{Content}
+
+\begin{frame}
+\frametitle{Content}
+  \tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Uncertainties in Python}
+\begin{frame}
+  \frametitle{Uncertainties Package}
+  The \texttt{uncertainties} package allows you to perform calculations with \hrefu{https://pythonhosted.org/uncertainties/}{\texttt{uncertainties}}
+  It supports calculations with numbers that have uncertainties and automatically propagates those uncertainties through mathematical operations.\\
+  \vspace{0.5cm}
+  Install the package with \texttt{pip}:
+  \begin{align*}
+    \texttt{pip install uncertainties}
+  \end{align*}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Basic Usage}
+  To use the \texttt{uncertainties} package, you need to import the \texttt{ufloat} function, which creates numbers with uncertainties:
+  \lstinputlisting[language=python, lastline=4]{examples/uncertainty1.py}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Propagation of Uncertainties}
+  When you perform operations with these numbers, the uncertainties are automatically propagated using \hrefu{https://en.wikipedia.org/wiki/Propagation_of_uncertainty}{linear error propagation}\\
+  \vspace{0.5cm}
+  This is great, because you don't have to manually calculate the uncertainties of the results anymore. Just use the \texttt{nominal\_value} and \texttt{std\_dev} functions to get the result and its uncertainty:
+\end{frame}
+
+\begin{frame}
+  \frametitle{Propagation of Uncertainties}
+  \lstinputlisting[language=python, firstline=5, lastline=11]{examples/uncertainty1.py}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Mathematical Functions}
+  The \texttt{uncertainties} package supports many mathematical functions, including trigonometric, exponential, and logarithmic functions:
+  \lstinputlisting[language=python]{examples/uncertainty2.py}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Plotting with Uncertainties}
+  You can also plot data with uncertainties using the \texttt{matplotlib} library:
+  \lstinputlisting[language=python]{examples/uncertainty3.py}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Plotting with Uncertainties}
+  \vspace{-5mm}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.75\textwidth]{examples/fig/plot.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Example: Beer-Lambert Law}
+  The Beer-Lambert law relates the absorption of light to the properties of the material it passes through. It is given by:
+  \begin{align*}
+    I(x) = I_0 e^{-\alpha x}
+  \end{align*}
+  where $I(x)$ is the intensity of the light after passing through a material of thickness $x$, $I_0$ is the initial intensity, and $\alpha$ is the absorption coefficient.\\
+\end{frame}
+
+\begin{frame}
+  \frametitle{Example: Beer-Lambert Law}
+  Suppose we have the following measurements:
+  % table with 5 measurements for different x: 
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+      \hline
+      $x$ & $I(x)$ & $\Delta I(x)$ \\
+      \hline
+      0.0 & 1.0 & 0.1 \\
+      0.5 & 0.6 & 0.1 \\
+      1.0 & 0.4 & 0.1 \\
+      1.5 & 0.3 & 0.1 \\
+      2.0 & 0.2 & 0.1 \\
+      \hline
+  \end{tabular}
+  \end{table}
+  and we want to determine the absorption coefficient $\alpha$ using a fit to the Beer-Lambert law.
+\end{frame}
+\begin{frame}
+  \frametitle{Example: Beer-Lambert Law}
+  \vspace{-5mm}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.75\textwidth]{examples/fig/beerLambert.png}
+  \end{figure}
+\end{frame}
+
+
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% EOF

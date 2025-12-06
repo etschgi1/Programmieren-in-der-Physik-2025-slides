@@ -1,0 +1,37 @@
+# Compiled files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+
+# Temporary and backup files
+*.bak
+*.dvi
+*.lof
+*.lot
+*.gz
+*.toc
+*.pdfsync
+*.synctex
+*.synctex(busy)
+
+# Editor-specific files
+*~
+\#*
+*.swp
+*.swo
+*.DS_Store
+._*
+
+# LaTeX intermediate build directory (for Overleaf)
+_build/

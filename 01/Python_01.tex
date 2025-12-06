@@ -1,0 +1,192 @@
+% LaTeX Präsentationsvorlage (2013) der TU Graz, rev12, 2013/01/31
+% !TeX encoding = UTF-8
+\documentclass{beamer}
+% \documentclass[aspectratio=169]{beamer}
+% \usetheme{tugraz2013}
+% \usetheme[notes]{tugraz2013}
+\usepackage{../common/beamerthemetugraz2013}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{bbding}
+\usepackage{wasysym}
+\usepackage{caption}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage{picture}
+\usepackage{rotating}
+
+\input{../common/commands.tex} % commands
+
+
+%% Titelblatt-Einstellungen
+\title[]
+{Python 01}
+\author[E.~Wachmann]{\scriptsize Elias Wachmann
+}
+\date{\the\year}
+\institute[Institute of Theoretical and Computational Physics]
+{
+}
+\instituteurl{www.tugraz.at}
+% \institutelogo{kurz.pdf}
+%~ \additionallogo{merged_logos}
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleframe
+
+
+\begin{frame}
+  \vspace*{\fill}
+  \begin{center}
+    \begin{quote}
+        ``The magic of computing begins with 0, a simple binary digit that serves as a powerful reminder that even the smallest building blocks can create wonders.''
+    \end{quote}
+\end{center}
+\vspace*{\fill}
+\end{frame}
+
+\begin{frame}
+\frametitle{Content}
+  \tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\begin{frame}
+  \frametitle{Starting to code}
+  This course is designed to give you a basic understanding of the Python programming language.\\
+  But to get you all up to speed we will first have a look at the Tools you need to get started...\\
+\end{frame}
+
+\begin{frame}
+  \frametitle{Tools for the course}
+  \begin{itemize}
+    \item Python - \hrefu{https://www.python.org/downloads/}{python.org/downloads}
+    \item VsCode - \hrefu{https://code.visualstudio.com/download}{code.visualstudio.com/download}
+    \item COMPUTOR - \hrefu{https://gitlab.tugraz.at/codeability-internal/computor-vscode-extension}{Getting started Guide - Computer}
+    \item COMPUTOR - \hrefu{https://gitlab.tugraz.at/codeability-internal/computor-vscode-extension/-/raw/main/computor-extension.vsix?ref_type=heads&inline=false}{Computor extension download-link}
+    % \item Git - \hrefu{https://git-scm.com/downloads}{git-scm.com/downloads}
+    % \item Gitlab - see Mail - personal account
+  \end{itemize}
+\end{frame}
+
+\section{Python \& VsCode}
+\begin{frame}
+  \frametitle{Python in VsCode}
+  Ok, so you have installed Python and VsCode.\\
+  \vspace{5mm}  
+  Let's take a look ...\\
+\end{frame}
+
+\begin{frame}
+  \frametitle{Python in VsCode}
+  \begin{center}
+    \includegraphics[width=\textwidth]{fig/VS_Code_overview.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Hello World!}
+  \lstinputlisting[language=python, lastline=4]{examples/hello_world.py}
+  After we have written the code we click on the run button in the top right corner.\\
+  We get the following output in the terminal:\\
+  \vspace{5mm}
+  \hspace*{-1cm} \includegraphics[width=1.16\textwidth]{fig/Hello_world_out.png}
+\end{frame}
+\begin{frame}[fragile]
+  \frametitle{Variables: Math vs. Programming}
+
+  \textbf{Mathematics:}  
+  \begin{center}
+    \large\( x = 5 \Rightarrow x \) always stays 5
+  \end{center}
+
+  \vspace{5mm}
+  
+  \textbf{Programming:}  
+  \begin{lstlisting}[language=Python]
+x = 5
+x = x + 1
+print(x)  # Output: 6
+\end{lstlisting}
+\begin{center}
+  \textcolor{red}{\large\( x = 5 \Rightarrow\) value of  $x$ can be changed}
+\end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Defining variables}
+  \lstinputlisting[language=python, firstline=6, lastline=10]{examples/hello_world.py}
+  \vspace{5mm}
+  And we can also print the variables to the terminal.\\
+  \vspace{5mm}
+  \lstinputlisting[language=python, firstline=13, lastline=16]{examples/hello_world.py}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Python as a calculator}
+  \lstinputlisting[language=python, firstline=18]{examples/hello_world.py}
+\end{frame}
+
+
+
+\section{Additional Resources}
+\begin{frame}
+  \frametitle{Additional Resources}
+  \begin{itemize}
+    \item \hrefu{https://www.codewars.com/}{Codewars}
+    \item \hrefu{https://leetcode.com/}{Leetcode}
+    \item \hrefu{https://ohmygit.org/}{Oh my git!}
+    \item \hrefu{https://www.learnpython.org/}{Interactive python tutorials}
+    \item \hrefu{https://www.codecademy.com/learn/learn-python-3}{Learn Python 3}
+    \item \hrefu{https://pll.harvard.edu/course/cs50-introduction-computer-science?delta=0}{CS50}
+  \end{itemize}
+   
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% EOF
+

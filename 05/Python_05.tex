@@ -1,0 +1,347 @@
+% LaTeX Präsentationsvorlage (2013) der TU Graz, rev12, 2013/01/31
+% !TeX encoding = UTF-8
+\documentclass{beamer}
+% \documentclass[aspectratio=169]{beamer}
+% \usetheme{tugraz2013}
+% \usetheme[notes]{tugraz2013}
+\usepackage{../common/beamerthemetugraz2013}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{bbding}
+\usepackage{wasysym}
+\usepackage{caption}
+% \usepackage{minted}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage{picture}
+\usepackage{rotating}
+
+\definecolor{darkred}{rgb}{0.85,0.16,0.0}
+\definecolor{darkgreen}{rgb}{0.16,0.70,0.27}
+
+\newcommand{\hrefu}[2]{\underline{\href{#1}{#2}}}
+
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\blue}[1]{{\color{blue} #1}}
+\newcommand{\darkgreen}[1]{\textcolor{darkgreen}{#1}}
+\newcommand{\darkred}[1]{\textcolor{darkred}{#1}}
+
+\newcommand*{\vpointer}{\vcenter{\hbox{\scalebox{1.5}{\large\pointer}}}}
+
+%% Titelblatt-Einstellungen
+\title[]
+{Python 05}
+\author[E.~Wachmann]{\scriptsize Elias Wachmann
+}
+\date{2025} % \today für heutiges Datum verwenden
+\institute[Institute of Theoretical and Computational Physics]
+{
+}
+\instituteurl{www.tugraz.at}
+% \institutelogo{kurz.pdf}
+%~ \additionallogo{merged_logos}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleframe
+
+
+
+\section*{Content}
+
+\begin{frame}
+\frametitle{Content}
+  \tableofcontents
+\end{frame}
+
+\section{for - Loops}
+\begin{frame}
+\frametitle{For loop}
+A \hrefu{https://www.w3schools.com/python/python_for_loops.asp}{\texttt{for}} loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string). The \hrefu{https://www.w3schools.com/python/ref_keyword_in.asp}{\texttt{in}} keyword is used to iterate over the sequence in a for loop.
+
+\lstinputlisting[language=python]{examples/for1.py}
+\end{frame}
+\begin{frame}
+  \frametitle{For loop - range}
+  \hrefu{https://www.w3schools.com/python/ref_func_range.asp}{\texttt{range}} is often used in for loops to iterate over a sequence of numbers. 
+  \lstinputlisting[language=python]{examples/for2.py} 
+\end{frame}
+\begin{frame}
+  \frametitle{For loop - enumerate}
+  \hrefu{https://www.w3schools.com/python/ref_func_enumerate.asp}{\texttt{enumerate}} is often used in for loops to iterate over a sequence and have an automatic counter.
+  \lstinputlisting[language=python]{examples/for3.py}
+\end{frame}
+\begin{frame}
+  \frametitle{For loop - zip}
+  \hrefu{https://www.w3schools.com/python/ref_func_zip.asp}{\texttt{zip}} is often used in for loops to iterate over two or more sequences at the same time.
+  \lstinputlisting[language=python,lastline=5]{examples/for4.py}
+  results in same output as: 
+  \lstinputlisting[language=python,firstline=7]{examples/for4.py}
+\end{frame}
+\section{while - Loops}
+\begin{frame}
+\frametitle{While loop}
+A \hrefu{https://www.w3schools.com/python/python_while_loops.asp}{\texttt{while}} loop is a control flow statement that allows code to be executed repeatedly based on a given Boolean condition. The while loop can be thought of as a repeating if statement. 
+\lstinputlisting[language=python]{examples/while1.py}
+\end{frame}
+\begin{frame}
+  \frametitle{While loop}
+  Loop is executed repeatedly as long as \texttt{count} is smaller than 10. 
+  \lstinputlisting[language=python]{examples/while1.py}
+  Output:
+  \texttt{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, Done with while loop}
+\end{frame} 
+\begin{frame}
+  \frametitle{While loop}
+  Multiple conditions in a while loop: \\
+  \lstinputlisting[language=python]{examples/while2.py}
+\end{frame}
+\begin{frame}
+  \frametitle{While loop}
+  Multiple conditions in a while loop: \\
+  \lstinputlisting[language=python]{examples/while2sol.py}
+\end{frame}
+\section{break \& continue}
+\begin{frame}
+  \frametitle{break \& continue}
+  \hrefu{https://www.w3schools.com/python/ref_keyword_break.asp}{break} can stop loops earlier. 
+  \lstinputlisting[language=python]{examples/break.py}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{break \& continue}
+  Search for a specific value and break if found: 
+  \lstinputlisting[language=python]{examples/while_break.py}
+\end{frame}
+\begin{frame}
+  \frametitle{break \& continue}
+  Same example with a for loop:
+  \lstinputlisting[language=python]{examples/for_break.py}
+\end{frame}
+\begin{frame}
+  \frametitle{break \& continue}
+  \hrefu{https://www.w3schools.com/python/ref_keyword_continue.asp}{continue} can be used to prematurely end the current iteration of a loop and continue with the next iteration.
+  \lstinputlisting[language=python]{examples/continue.py}
+  Output: \\
+  \texttt{1, 3, 5, 7, 9, }
+\end{frame}
+
+\section{String formatting}
+\begin{frame}
+  \frametitle{Good to know: formatting in \texttt{print()}}
+  \lstinputlisting[language=python]{examples/print.py}
+  Same output for all three examples: \\
+  \texttt{I'm John and I am 30 years old.}
+\end{frame}
+\begin{frame}
+  \frametitle{Good to know: formatting in \texttt{print()}}
+  Format floats with a certain number of decimals places: 
+  \lstinputlisting[language=python]{examples/print_float.py}
+\end{frame}
+\section{List Comprehensions}
+\begin{frame}
+  \frametitle{List Comprehensions}
+  \hrefu{https://www.w3schools.com/python/python_lists_comprehension.asp}{List comprehensions} are a concise and efficient way to create a new list by applying an expression to each element of an existing list, optionally filtered by a conditional statement. \\They provide a more readable and Pythonic alternative to traditional for loops and if statements.\\
+\end{frame}
+\begin{frame}
+  \frametitle{List Comprehensions - Syntax}
+  Basic syntax of a list comprehension: \\
+  \begin{center}
+    \vspace{5mm}
+    \texttt{[expression for item in list]} \\
+  \end{center}
+  \texttt{expression} can be any valid expression, like a function call or a mathematical operation.\\
+  \lstinputlisting[language=python]{examples/list\_comp0.py}
+\end{frame}
+\begin{frame}
+  \frametitle{List Comprehensions - Syntax}
+  Syntax list comprehension with conditional statement: \\
+  \begin{center}
+    \vspace{5mm}
+    \texttt{[expression for item in list if conditional]} \\
+  \end{center}
+  \texttt{conditional} statements can be used to decide if a given item should be included in the created list \\
+  \lstinputlisting[language=python]{examples/list\_comp1.py}
+\end{frame}
+\begin{frame}
+  \frametitle{List Comprehensions - Syntax}
+  Syntax list comprehension with nested for loops: \\
+  \begin{center}
+    \vspace{5mm}
+    \texttt{[expression for item1 in list1 for item2 in list2]} \\
+    \lstinputlisting[language=python]{examples/list\_comp2.py}
+  \end{center}
+\end{frame}
+\begin{frame}
+  \frametitle{List Comprehensions - Examples}
+  \lstinputlisting[language=python]{examples/list\_comp3.py}
+  \small\hrefu{https://www.learnbyexample.org/python-list-comprehension/}{more examples}
+\end{frame}
+
+\section{Bonus: Bitwise Operations}
+\begin{frame}
+  \frametitle{Bitwise Operations - Basics}
+  Bitwise Operators are used to compare (binary) numbers. They are used to perform bit by bit operation. \\For example, 2 is 10 in binary and 7 is 111. If we perform a binary AND on 2 and 7 we get:
+  \begin{table}
+    \centering
+    \begin{tabular}{c|c|c}
+       &0010 \\
+    AND&0111 \\
+    \hline
+       &0010\\
+    \end{tabular}
+  \end{table}
+  Each bit is compared and if both bits are 1, the result is 1, otherwise the result is 0.\\
+\end{frame}
+
+\begin{frame}
+  \frametitle{Bitwise Operations - Tables}
+  Bitwise AND ($\land$), OR ($\lor$), XOR ($\oplus$) and NOT ($\lnot$) behave as shown in the following tables:
+  \begin{table}
+    \centering
+    \begin{tabular}{c|c|c|c|c|c}
+    A & B & A $\land$ B & A $\lor$ B & A $\oplus$ B & $\lnot$ A \\
+    \hline
+    0 & 0 & 0 & 0 & 0 & 1 \\
+    0 & 1 & 0 & 1 & 1 & 1 \\
+    1 & 0 & 0 & 1 & 1 & 0 \\
+    1 & 1 & 1 & 1 & 0 & 0 \\
+    \end{tabular}
+  \end{table}
+Bitwise operations perform a check on each bit of the number. If the result of the truth table is 1, the bit is set to 1, otherwise it is set to 0.\\
+\end{frame}
+\begin{frame}
+  \frametitle{Bitwise Operations - Examples}
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{ccccc}
+        & 0101   & \hspace{2cm}   & 0101\\
+    AND & 1100   & \hspace{2cm} OR& 1100\\
+    \cline{2-2}  \cline{4-4}
+        & 0100   & \hspace{2cm}   & 1101\\
+    \end{tabular}
+    \end{table}
+    \begin{table}[h]
+      \centering
+      \begin{tabular}{ccccc}
+          & 0101   & \hspace{2cm}    & \\
+      XOR & 1100   & \hspace{2cm} NOT& 1100\\
+      \cline{2-2}  \cline{4-4}
+          & 1001   & \hspace{2cm}   & 0011\\
+      \end{tabular}
+      \end{table}
+\end{frame}
+\begin{frame}
+  \frametitle{Bitwise Operations - Shifts}
+  Bitwise shifts are used to shift the bits of a number to the left or right. Using variables \texttt{sl} and \texttt{sr} we get: \\
+  \begin{table}
+    \centering
+    \begin{tabular}{cc|c|c|c}
+    &\texttt{sl} & \texttt{sl} $\ll$ 1 & \texttt{sl} $\ll$ 2 & \texttt{sl} $\ll$ 3 \\
+    \cline{2-5}
+    Binary number &1 & 10 & 100 & 1000 \\
+    Decimal number &1 & 2 & 4 & 8 \\
+    \end{tabular}
+  \end{table}
+  \begin{table}
+    \centering
+    \begin{tabular}{cc|c|c|c}
+    &\texttt{sr} & \texttt{sr} $\gg$ 1 & \texttt{sr} $\gg$ 2 & \texttt{sr} $\gg$ 3 \\
+    \cline{2-5}
+    Binary number  &101010 & 10101 & 1010 & 101 \\
+    Decimal number &42 & 21 & 10 & 5 \\
+    \end{tabular}
+  \end{table}
+\end{frame}
+\begin{frame}
+  \frametitle{Bitwise Operations - Shifts}
+  Shifting a number to the \textbf{left} is equivalent to multiplying it with $2^n$, where $n$ is the number of shifts.\\ 
+  \vspace{5mm}
+  Shifting a number to the \textbf{right} is equivalent to dividing it by $2^n$, where $n$ is the number of shifts.\\
+  \vspace{5mm}
+  \textbf{Note: } The bits that are shifted out of the number are lost. And a right-shift/division by $2^n$ is always rounded down to the nearest integer.\\
+
+  
+
+\end{frame}
+\begin{frame}
+  \frametitle{Bitwise Operations - Overview}
+  \begin{center}
+    \begin{tabular}{c|c|c}
+      Operator & ASCII & Description  \\
+      \hline
+      $\land$   & \&                &Bitwise AND \\
+      $\lor$    & \texttt{|}        &Bitwise OR  \\
+      $\oplus$  & \texttt{\string^} &Bitwise XOR \\
+      $\lnot$   & \texttt{\~{}}     &Bitwise NOT \\
+      $\ll$     & \texttt{<<}       &Left shift  \\
+      $\gg$     & \texttt{>>}       &Right shift \\
+    \end{tabular}
+  \end{center}
+  To use bitwise operators in Python, we use the following ASCII-symbols given in the table above.\\
+\end{frame}
+\begin{frame}
+  \frametitle{Bitwise Operations - in python}
+  Usage of binary operators in python: 
+  \lstinputlisting[language=python]{examples/bitwise1.py}
+\end{frame}
+\begin{frame}
+  \frametitle{Number systems}
+  Maybe you have noticed the \texttt{0b} prefix in the previous example. This is used to indicate that the number is in binary.\\
+  Python also supports hexadecimal (\texttt{0x}) and octal (\texttt{0o}) numbers.\\
+  The in-built-functions \hrefu{https://docs.python.org/3/library/functions.html\#oct}{\texttt{oct()}}, \hrefu{https://docs.python.org/3/library/functions.html\#bin}{\texttt{bin()}}, \hrefu{https://docs.python.org/3/library/functions.html\#int}{\texttt{int()}} and \hrefu{https://docs.python.org/3/library/functions.html\#hex}{\texttt{hex()}} can be used to convert between number systems.\\
+  \hrefu{https://docs.python.org/3/library/functions.html\#int}{\texttt{int()}} can also be used to convert a string to an integer in a given base.\\
+
+\end{frame}
+\begin{frame}
+  \frametitle{Number systems - Examples}
+  \lstinputlisting[language=python]{examples/number\_systems.py}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% EOF

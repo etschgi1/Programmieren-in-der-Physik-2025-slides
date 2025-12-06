@@ -1,0 +1,5 @@
+linalg.solve
+linalg.eig
+@ operator in numpy
+dot product
+Einführung Caesar

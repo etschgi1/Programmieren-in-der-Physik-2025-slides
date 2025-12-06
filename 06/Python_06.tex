@@ -1,0 +1,291 @@
+% LaTeX Präsentationsvorlage (2013) der TU Graz, rev12, 2013/01/31
+% !TeX encoding = UTF-8
+\documentclass{beamer}
+% \documentclass[aspectratio=169]{beamer}
+% \usetheme{tugraz2013}
+% \usetheme[notes]{tugraz2013}
+\usepackage{../common/beamerthemetugraz2013}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{bbding}
+\usepackage{wasysym}
+\usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{shapes.multipart, positioning}
+% \usepackage{minted}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage{picture}
+\usepackage{rotating}
+
+\definecolor{darkred}{rgb}{0.85,0.16,0.0}
+\definecolor{darkgreen}{rgb}{0.16,0.70,0.27}
+
+\newcommand{\hrefu}[2]{\underline{\href{#1}{#2}}}
+
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\blue}[1]{{\color{blue} #1}}
+\newcommand{\darkgreen}[1]{\textcolor{darkgreen}{#1}}
+\newcommand{\darkred}[1]{\textcolor{darkred}{#1}}
+
+\newcommand*{\vpointer}{\vcenter{\hbox{\scalebox{1.5}{\large\pointer}}}}
+
+\newcommand{\be}[1]{\begin{equation} \label{#1}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}[1]{\begin{eqnarray} \label{#1}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\bean}{\begin{eqnarray*}}
+\newcommand{\eean}{\end{eqnarray*}}
+
+\newcommand{\non}{\nonumber\\}
+\newcommand{\eq}[1]{(\ref{#1})}
+\newcommand{\difp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\br}{{\bf r}}
+\newcommand{\bR}{{\bf R}}
+\newcommand{\bA}{{\bf A}}
+\newcommand{\bB}{{\bf B}}
+\newcommand{\bE}{{\bf E}}
+\newcommand{\bm}{{\bf m}}
+%\renewcommand{\bm}{{\bf m}}
+\newcommand{\bn}{{\bf n}}
+\newcommand{\bN}{{\bf N}}
+\newcommand{\bp}{{\bf p}}
+\newcommand{\bP}{{\bf P}}
+\newcommand{\bF}{{\bf F}}
+\newcommand{\by}{{\bf y}}
+\newcommand{\bz}{{\bf z}}
+\newcommand{\bZ}{{\bf Z}}
+\newcommand{\bV}{{\bf V}}
+\newcommand{\bv}{{\bf v}}
+\newcommand{\bu}{{\bf u}}
+\newcommand{\bx}{{\bf x}}
+\newcommand{\bX}{{\bf X}}
+\newcommand{\bW}{{\bf W}}
+\newcommand{\bJ}{{\bf J}}
+\newcommand{\bj}{{\bf j}}
+\newcommand{\bk}{{\bf k}}
+\newcommand{\bTheta}{{\bf \Theta}}
+\newcommand{\btheta}{{\boldsymbol\theta}}
+\newcommand{\bOmega}{{\bf \Omega}}
+\newcommand{\bomega}{{\boldsymbol\omega}}
+\newcommand{\brho}{{\boldsymbol\rho}}
+\newcommand{\rd}{{\rm d}}
+\newcommand{\rJ}{{\rm J}}
+\newcommand{\ph}{{\varphi}}
+\newcommand{\te}{\theta}
+\newcommand{\tht}{\vartheta}
+\newcommand{\vpar}{v_\parallel}
+\newcommand{\vparkb}{v_{\parallel k b}}
+\newcommand{\vparkm}{v_{\parallel k m}}
+\newcommand{\Jpar}{J_\parallel}
+\newcommand{\ppar}{p_\parallel}
+\newcommand{\Bpstar}{B_\parallel^*}
+\newcommand{\intpi}{\int\limits_{0}^{2\pi}}
+\newcommand{\summ}{\sum \limits_{m=-\infty}^\infty}
+\newcommand{\tb}{\tau_b(\uv)}
+\newcommand{\bh}{{\bf h}}
+\newcommand{\cE}{{\cal E}}
+\newcommand{\bsigma}{{\boldsymbol\sigma}}
+\newcommand{\bS}{{\mathbf S}}
+\newcommand{\bI}{{\mathbf I}}
+\newcommand{\odtwo}[2]{\frac{\rd #1}{\rd #2}}
+\newcommand{\pdone}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\pdtwo}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\ds}{\displaystyle}
+
+%% Titelblatt-Einstellungen
+\title[]
+{Python 06}
+\author[E.~Wachmann]{\scriptsize Elias Wachmann
+}
+\date{2025} % \today für heutiges Datum verwenden
+\institute[Institute of Theoretical and Computational Physics]
+{
+}
+\instituteurl{www.tugraz.at}
+% \institutelogo{kurz.pdf}
+%~ \additionallogo{merged_logos}
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleframe
+
+%\begin{frame}
+%  \frametitle{Outline}
+%  \tableofcontents%[hideallsubsections] 
+%  \note{
+%  	Meine Präsentation ist wie folgt strukturiert \ldots
+%  }
+%\end{frame}
+
+\section*{Content}
+
+\begin{frame}
+\frametitle{Content}
+  \tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Indexing revisited}
+\begin{frame}
+  \frametitle{Logical indexing}
+  Using logical indexing, we can select elements of an array that satisfy a certain condition. For example, we can select all elements of an array that are larger than a certain value. The result is a 1D array containing the selected elements. 
+  \lstinputlisting[language=python, firstline=3]{examples/logic\_indexing1.py}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Logical Operators on numpy arrays}
+  Numpy arrays can be combined using logical operators: 
+  \begin{itemize}
+    \item \hrefu{https://numpy.org/doc/stable/reference/routines.logic.html}{\texttt{logical\_and}}
+    \item \hrefu{https://numpy.org/doc/stable/reference/routines.logic.html}{\texttt{logical\_or}}
+    \item \hrefu{https://numpy.org/doc/stable/reference/routines.logic.html}{\texttt{logical\_not}}
+    \item \hrefu{https://numpy.org/doc/stable/reference/routines.logic.html}{\texttt{logical\_xor}}
+  \end{itemize}
+They evaluate the truth tables (given in Python 05) element-wise.
+\end{frame}
+\begin{frame}
+  \frametitle{Logical Operators on numpy arrays}
+  Examples using logical operators:
+  \lstinputlisting[language=python, firstline=3,lastline=11]{examples/logic\_indexing2.py}
+  \textbf{Note:} B is evaluated on both rows of A.
+\end{frame}
+\begin{frame}
+  \frametitle{Logical Operators on numpy arrays caveats}
+ \lstinputlisting[language=python, firstline=5, lastline=5]{examples/logic\_indexing2.py}
+  Output:
+  \lstinputlisting[language=python, firstline=13, lastline=15]{examples/logic\_indexing2.py}
+\end{frame}
+\begin{frame}
+  \frametitle{np.logical\_and/or/not() vs. \& / \texttt{|} / \texttt{\~{}} }
+  While the \hrefu{https://numpy.org/doc/stable/reference/routines.logic.html}{\texttt{logical\_and/or/not}} operators evaluates the truth table element-wise, the binary \hrefu{https://www.w3schools.com/python/gloss_python_bitwise_operators.asp}{\texttt{\&} / \texttt{|} / \texttt{\~{}}} operators evaluates the truth table bitwise.\\
+  \textbf{But why should I care?}\\
+  Maybe you want to check which elements are not equal to zero between both arrays: 
+  \lstinputlisting[language=python, firstline=2, lastline=5]{examples/logic\_indexing3.py}
+\end{frame}
+\begin{frame}
+  \frametitle{np.logical\_and/or/not() vs. \& / \texttt{|} / \texttt{\~{}} }
+  \textbf{But why should I care?}
+  \lstinputlisting[language=python, firstline=2]{examples/logic\_indexing3.py}
+  Remember that the \textbf{bitwise} operators evaluate the truth table \textbf{bitwise}. Therefore, the result is not what we want (or maybe expected).
+\end{frame}
+\begin{frame}
+  \frametitle{np.logical\_and/or/not() vs. \& / \texttt{|} / \texttt{\~{}} }
+  \textbf{But why should I care?}
+  \lstinputlisting[language=python, firstline=2]{examples/logic\_indexing3.py}
+  \vspace{5mm}
+  \begin{tabular}{c c c c c c c c c }
+    &42: & 0 & 0 & 1 & 0 & 1 & 0 \\ 
+    AND&-51:& 1 & 1 & 0 & 0 & 1 & 0 \\\hline
+    &8:  & 0 & 0 & 0 & 0 & 1 & 0 \\
+  \end{tabular}
+\end{frame}
+
+\section{Scope}
+\begin{frame}
+  \frametitle{Scopes in python}
+  Variables in python have a \hrefu{https://www.w3schools.com/python/python_scope.asp}{scope} that defines where they can be accessed.\\
+  \lstinputlisting[language=python]{examples/scope1.py}
+\end{frame}
+\begin{frame}
+  \frametitle{Scopes in python}
+  A scope is always limited to the current block (/indent).\\
+  Variables declared in the outermost scope are called \textbf{global} and can be accessed from anywhere.\\
+  \vspace{5mm}
+  Variables declared in a function are called \textbf{local} and can only be accessed from within the function.\\
+  \vspace{5mm}
+  In general, it is good practice to \textbf{avoid} global variables!
+\end{frame}
+\section{Call by value vs. call by reference}
+\begin{frame}
+  \frametitle{Call by value vs. call by reference}
+  Parameter can be given to functions by value or by reference.\\
+  \vspace{5mm}
+  Primitive types -- such as \texttt{int}, \texttt{str} and \texttt{float} -- are passed by value (a separate copy is available).\\
+  \vspace{5mm}
+  Mutable types -- such as \texttt{lists}, \texttt{dictionaries} or \texttt{objects} in general are passed by reference (they refer back to the original). 
+\end{frame}
+\begin{frame}
+  \frametitle{Call by value vs. call by reference}
+  \lstinputlisting[language=python]{examples/callrefval.py}
+\end{frame}
+\section{Copy vs. Deepcopy}
+\begin{frame}
+  \frametitle{What is a copy?}
+  A copy is a new object that is created from an existing object.\\
+  \vspace{5mm}
+  \textbf{Shallow copy:} A new object is created, but the elements of the new object are references to the elements of the original object.\\
+  \vspace{5mm}
+  \textbf{Deep copy:} A new object is created, and the elements of the new object are copies of the elements of the original object.
+\end{frame}
+\begin{frame}
+  \frametitle{Create a shallow copy (\hrefu{https://docs.python.org/3/library/copy.html}{copy})}
+  Using pythons build-in \hrefu{https://docs.python.org/3/library/copy.html}{copy} module, we can create a shallow copy of an object.\\
+  \lstinputlisting[language=python, firstline=1]{examples/copy2.py}
+\end{frame}
+\begin{frame}
+  \frametitle{Create a (deep)copy (\hrefu{https://numpy.org/doc/stable/reference/generated/numpy.copy.html}{np.copy})}
+  The whole object can be copied using the \hrefu{https://numpy.org/doc/stable/reference/generated/numpy.copy.html}{copy} function.\\
+  \lstinputlisting[language=python, firstline=2]{examples/copy1.py}
+  Alternatively one can use the built-in \hrefu{https://docs.python.org/3/library/copy.html}{deepcopy} function. 
+
+  
+
+\end{frame}
+\section{Further numpy examples}
+\begin{frame}
+  \frametitle{Numpy examples -- Reshaping}
+  \hrefu{https://numpy.org/doc/stable/reference/generated/numpy.reshape.html}{reshape} can be used to change the shape of an array.
+  \lstinputlisting[language=python, firstline=3]{examples/numpy5.py}
+\end{frame}
+\begin{frame}
+  \frametitle{Numpy examples -- Ravel}
+  \hrefu{https://numpy.org/doc/stable/reference/generated/numpy.ravel.html}{ravel} can be used to flatten an array.
+  \lstinputlisting[language=python, firstline=3]{examples/numpy4.py}
+  \hrefu{https://numpy.org/doc/stable/reference/generated/numpy.ndarray.flatten.html}{flatten} is another function that can be used to flatten an array (always returns a copy of the original).
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% EOF

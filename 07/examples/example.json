@@ -1,0 +1,9 @@
+{
+  "name": "John Smith",
+  "age": 30,
+  "email": "john.smith@example.com",
+  "phone": {
+    "home": "555-1234",
+    "work": "555-5678"
+  }
+}

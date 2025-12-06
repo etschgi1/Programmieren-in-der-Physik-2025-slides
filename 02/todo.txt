@@ -1,0 +1,11 @@
+Vektoren + Matrizen 
+numpy array erstellen + operationen
+np.arange, np.linspace, scipy.special.factorial
+Zufallszahlen
+einfache Plotten
+slicing + indexierung (shape, len, etc.)
+
++++
+Data read + write
+np.loadtxt
++ plotten. 
